@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <span>counter number: </span>
+    <input type="text" v-model="counterNum">
+    <counter v-for="n in parseInt(counterNum)" v-bind:key="n" ref="child"></counter>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import counter from './components/Counter.vue'
 
 export default {
   name: 'app',
+  data: function () {
+    return {
+      counterNum: 8
+    };
+  },
   components: {
-    HelloWorld
+    counter
   }
 }
 </script>
