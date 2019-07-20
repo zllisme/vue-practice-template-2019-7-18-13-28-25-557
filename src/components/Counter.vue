@@ -2,20 +2,28 @@
   <div>
     <span>{{countNum}}</span>
     <br>
-    <button @click="countNum++">点我+</button>
-    <button @click="countNum--">点我-</button>
+    <button @click="add">点我+</button>
+    <button @click="sub">点我-</button>
   </div>
 </template>
 
 <script>
-import { scrypt } from 'crypto';
-import { Script } from 'vm';
 export default {
   name: 'counter',
   data: function () {
     return {
       countNum: 0
     };
+  },
+  methods: {
+      add: function () {
+          this.countNum++;
+          this.$emit('add')
+      },
+      sub: function () {
+          this.countNum--;
+          this.$emit('sub')
+      }
   }
 }
 </Script>
