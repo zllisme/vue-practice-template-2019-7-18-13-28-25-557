@@ -18,12 +18,15 @@ export default {
   methods: {
       add: function () {
           this.countNum++;
-          this.$emit('add')
+          this.$emit('calculate', 1);
       },
       sub: function () {
           this.countNum--;
-          this.$emit('sub')
+          this.$emit('calculate', -1);
       }
+  },
+  destroyed() {
+      this.$emit('calculate', -this.countNum);
   }
 }
 </Script>

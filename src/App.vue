@@ -2,7 +2,7 @@
   <div id="app">
     <span>counter number: </span>
     <input type="text" v-model="counterNum">
-    <counter v-for="n in parseInt(counterNum)" :key="n" @add="addTotal" @sub="subTotal"></counter>
+    <counter v-for="n in parseInt(counterNum)" :key="n"  @calculate="calculate"></counter>
     <span>total: {{totalNum}}</span>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
     },
     subTotal: function () {
       this.totalNum--;
+    },
+    calculate: function (number) {
+      this.totalNum += number;
     }
   }
 }
