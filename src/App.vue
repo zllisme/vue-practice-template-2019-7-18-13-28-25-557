@@ -1,25 +1,39 @@
 <template>
   <div id="app">
+    <!-- <h2>{{hello}}</h2> -->
     <span>counter number: </span>
     <input type="text" v-model="counterNum">
-    <counter v-for="n in parseInt(counterNum)" :key="n"  @calculate="calculate"></counter>
+    <counter v-for="n in parseInt(getCounterNumber)" :key="n"  @calculate="calculateTotal"></counter>
     <span>total: {{totalNum}}</span>
   </div>
 </template>
 
 <script>
-import counter from './components/Counter.vue'
+import counter from './components/Counter.vue';
+import axios from "axios";
+
 
 export default {
   name: 'app',
   data: function () {
     return {
+      hello: '',
       counterNum: 8,
       totalNum: 0
     };
   },
   components: {
     counter
+  },
+  computed: {
+    getCounterNumber () {
+      return this.$store.getters.getCounterNumber
+    }
+  },
+  watch: {
+    counterNum (val) {
+      this.$store.commit('setCounterNumber', val)
+    }
   },
   methods: {
     addTotal: function () {
@@ -28,7 +42,7 @@ export default {
     subTotal: function () {
       this.totalNum--;
     },
-    calculate: function (number) {
+    calculateTotal: function (number) {
       this.totalNum += number;
     }
   }
