@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <!-- <h2>{{hello}}</h2> -->
-    <span>counter number: </span>
-    <input type="text" v-model="counterNum">
-    <counter v-for="n in parseInt(getCounterNumber)" :key="n"></counter>
-    <span>total: {{this.$store.getters.getTotalNumber}}</span>
-  </div>
+    <!-- <div v-if="isShow">
+      <HelloWorld></HelloWorld>
+    </div>
+    <div v-else>
+      <span>counter number: </span>
+      <input type="text" v-model="counterNum">
+      <counter v-for="n in parseInt(getCounterNumber)" :key="n"></counter>
+      <span>total: {{this.$store.getters.getTotalNumber}}</span>
+    </div> -->
+    <router-view></router-view> 
+    </div>
 </template>
 
 <script>
-import counter from './components/Counter.vue';
-
 export default {
   name: 'app',
   data: function () {
     return {
       hello: '',
       counterNum: 5,
-      totalNum: 0
+      totalNum: 0,
+      // showComponent: this.$router.currentComponent
     };
-  },
-  components: {
-    counter
   },
   computed: {
     getCounterNumber () {
