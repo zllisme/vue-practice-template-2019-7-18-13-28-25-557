@@ -12,7 +12,8 @@ Vue.use(Vuex)
 
 const state = {
 
-  counterNum: 0
+  counterNum: 5,
+  totalNum: 0
 
 }
 

@@ -18,15 +18,15 @@ export default {
   methods: {
       add: function () {
           this.countNum++;
-          this.$emit('calculate', 1);
+          this.$store.commit('setTotalNumber', 1);
       },
       sub: function () {
           this.countNum--;
-          this.$emit('calculate', -1);
+          this.$store.commit('setTotalNumber', -1);
       }
   },
   destroyed() {
-      this.$emit('calculate', -this.countNum);
+      this.$store.commit('setTotalNumber', -this.countNum);
   }
 }
 </Script>

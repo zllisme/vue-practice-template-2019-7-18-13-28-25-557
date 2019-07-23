@@ -3,22 +3,20 @@
     <!-- <h2>{{hello}}</h2> -->
     <span>counter number: </span>
     <input type="text" v-model="counterNum">
-    <counter v-for="n in parseInt(getCounterNumber)" :key="n"  @calculate="calculateTotal"></counter>
-    <span>total: {{totalNum}}</span>
+    <counter v-for="n in parseInt(getCounterNumber)" :key="n"></counter>
+    <span>total: {{this.$store.getters.getTotalNumber}}</span>
   </div>
 </template>
 
 <script>
 import counter from './components/Counter.vue';
-import axios from "axios";
-
 
 export default {
   name: 'app',
   data: function () {
     return {
       hello: '',
-      counterNum: 8,
+      counterNum: 5,
       totalNum: 0
     };
   },
@@ -36,12 +34,6 @@ export default {
     }
   },
   methods: {
-    addTotal: function () {
-      this.totalNum++;
-    },
-    subTotal: function () {
-      this.totalNum--;
-    },
     calculateTotal: function (number) {
       this.totalNum += number;
     }
